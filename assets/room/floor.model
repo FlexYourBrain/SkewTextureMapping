@@ -1,0 +1,7 @@
+mesh: "/assets/room/floor.glb"
+material: "/assets/misc/decor.material"
+textures: "/assets/textures/alpha.png"
+skeleton: ""
+animations: ""
+default_animation: ""
+name: "floor"

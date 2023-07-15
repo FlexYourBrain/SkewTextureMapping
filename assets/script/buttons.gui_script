@@ -1,0 +1,32 @@
+local receiver = "/background#decor"
+local wallx = "wallx" local wall1 = "wall1" local wall2 = "wall2"
+local floorx = "floorx" local floor1 = "floor1" local floor2 = "floor2"
+
+function init(self)
+	msg.post(".", "acquire_input_focus")
+	
+	self.floorx = gui.get_node("floorx")
+	self.floor1 = gui.get_node("floor1")
+	self.floor2 = gui.get_node("floor2")
+
+	self.wallx = gui.get_node("wallx")
+	self.wall1 = gui.get_node("wall1")
+	self.wall2 = gui.get_node("wall2")
+
+end
+
+function on_input(self, action_id, action)
+	if gui.pick_node(self.wallx, action.x, action.y) and action.pressed then
+		msg.post(receiver, wallx)
+	elseif gui.pick_node(self.wall1, action.x, action.y) and action.pressed then
+		msg.post(receiver, wall1)
+	elseif gui.pick_node(self.wall2, action.x, action.y) and action.pressed then
+		msg.post(receiver, wall2)
+	elseif gui.pick_node(self.floorx, action.x, action.y) and action.pressed then
+		msg.post(receiver, floorx)
+	elseif gui.pick_node(self.floor1, action.x, action.y) and action.pressed then
+		msg.post(receiver, floor1)
+	elseif gui.pick_node(self.floor2, action.x, action.y) and action.pressed then
+		msg.post(receiver, floor2)
+	end
+end

@@ -1,0 +1,28 @@
+go.property("alpha", resource.texture("/assets/textures/alpha.png"))
+go.property("wall1", resource.texture("/assets/textures/wall1.png"))
+go.property("wall2", resource.texture("/assets/textures/wall2.png"))
+go.property("floor1", resource.texture("/assets/textures/floor1.png"))
+go.property("floor2", resource.texture("/assets/textures/floor2.png"))
+
+local floor = "/floor#floor"; local walls = "/walls#walls"; local tex_x = "x"; local tex0 = "texture0"
+
+function init(self)
+	msg.post("@render:", "clear_color", { color = vmath.vector4(0.3, 0.32, 0.4, 1.0) } )
+	
+end
+
+function on_message(self, message_id, message, sender)
+	if message_id == hash("wallx") then
+		go.set(walls, tex0, self.alpha)
+	elseif message_id == hash("wall1") then
+		go.set(walls, tex0, self.wall1)
+	elseif message_id == hash("wall2") then
+		go.set(walls, tex0, self.wall2)
+	elseif message_id == hash("floorx") then
+		go.set(floor, tex0, self.alpha)
+	elseif message_id == hash("floor1") then
+		go.set(floor, tex0, self.floor1)
+	elseif message_id == hash("floor2") then
+		go.set(floor, tex0, self.floor2)
+	end
+end
